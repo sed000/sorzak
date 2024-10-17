@@ -24,14 +24,19 @@ import { Input } from "@/components/ui/input";
 import { updateData } from "@/api/actions";
 import { useRouter } from "next/navigation";
 
-export default function EditDialog({ params }: { params: { id: string } }) {
+export default function EditDialog({
+  params,
+}: {
+  params: { id: string; key: string };
+}) {
   const router = useRouter();
-  const [key, setKey] = useState("");
+  const [key, setKey] = useState(params.key);
   const [value, setValue] = useState(false);
 
   async function saveChanges(key: string, value: boolean) {
     try {
       await updateData(key, value, params.id);
+      setKey(key);
     } catch (error) {
       console.log("Something went wrong");
     }

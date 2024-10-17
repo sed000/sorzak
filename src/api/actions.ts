@@ -2,6 +2,8 @@
 
 import { auth } from "@clerk/nextjs/server";
 
+const apiLink = process.env.NEXT_PUBLIC_API_LINK;
+
 interface DataItem {
   id?: string;
   userId: string;
@@ -15,7 +17,7 @@ export async function fetchData(): Promise<DataItem[]> {
     throw new Error("User not authenticated");
   }
 
-  const response = await fetch(`http://localhost:8080/${userId}`, {
+  const response = await fetch(`${apiLink}/${userId}`, {
     cache: "no-store",
   });
   if (!response.ok) {
@@ -31,7 +33,7 @@ export async function createData(newItem: DataItem) {
     throw new Error("User not authenticated");
   }
 
-  const response = await fetch(`http://localhost:8080/${userId}/create`, {
+  const response = await fetch(`${apiLink}/${userId}/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export async function updateData(key: string, value: boolean, id: string) {
     key,
     value,
   };
-  const response = await fetch(`http://localhost:8080/${userId}/update/${id}`, {
+  const response = await fetch(`${apiLink}/${userId}/update/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -74,7 +76,7 @@ export async function deleteData(id: string) {
     throw new Error("User not authenticated");
   }
 
-  const response = await fetch(`http://localhost:8080/${userId}/delete/${id}`, {
+  const response = await fetch(`${apiLink}/${userId}/delete/${id}`, {
     method: "DELETE",
   });
   if (!response.ok) {

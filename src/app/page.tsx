@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Code, Smile } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,27 +39,28 @@ export default function Component() {
             <Button
               variant={"destructive"}
               onClick={() => {
-                router.push("https://fair-mallard-30.accounts.dev/sign-up?redirect_url=http%3A%2F%2Flocalhost%3A3000%2F");
+                const signup = process.env.NEXT_PUBLIC_CLERK_SIGNUP
+                router.push(
+                  `${signup}`
+                );
               }}
             >
-            
               Sign up to use BaaS
             </Button>
           </div>
         </SignedOut>
+        <SignedIn>
+          <section className="py-12">
+            <div className="container mx-auto max-w-md text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <Link href={"/dashboard"} className="text-blue-500 underline">
+                  Go to your Dashboard
+                </Link>
+              </h2>
+            </div>
+          </section>
+        </SignedIn>
       </main>
-
-      <SignedIn>
-        <section className="bg-white py-12">
-          <div className="container mx-auto max-w-md text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              <Link href={"/dashboard"} className="text-blue-500 underline">
-                Go to your Dashboard here
-              </Link>
-            </h2>
-          </div>
-        </section>
-      </SignedIn>
     </div>
   );
 }

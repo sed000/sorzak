@@ -1,5 +1,4 @@
 "use server";
-import { fetchData } from "@/api/actions";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -10,12 +9,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Link, View } from "lucide-react";
+import { Link } from "lucide-react";
 import React from "react";
 import EditDialog from "./edit";
 import DeleteButton from "./delete";
+import { fetchData } from "@/api/actions";
 
 export default async function DataTable() {
+  const apiLink = process.env.NEXT_PUBLIC_API_LINK;
   const data = await fetchData();
   return (
     <div>
@@ -35,9 +36,9 @@ export default async function DataTable() {
               <TableRow key={item.id}>
                 <TableCell>{item.key}</TableCell>
                 <TableCell>
-                  <Button asChild>
+                  <Button className="bg-blue-600 hover:bg-blue-700" asChild>
                     <a
-                      href={`http://localhost:8080/data/${item.id}`}
+                      href={`${apiLink}/data/${item.id}`}
                       target="_blank"
                     >
                       Link
@@ -52,6 +53,7 @@ export default async function DataTable() {
                     <EditDialog
                       params={{
                         id: item.id,
+                        key: item.key,
                       }}
                     ></EditDialog>
 
@@ -60,8 +62,6 @@ export default async function DataTable() {
                         id: item.id,
                       }}
                     ></DeleteButton>
-
-                  
                   </div>
                 </TableCell>
               </TableRow>

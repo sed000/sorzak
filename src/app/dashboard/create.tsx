@@ -18,7 +18,6 @@ import { useRouter } from "next/navigation";
 export default function CreateForm() {
   const [key, setKey] = useState("");
   const [value, setValue] = useState<boolean | null>(null);
-  const [selectVal, setSelectVal] = useState("");
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,7 +26,6 @@ export default function CreateForm() {
       try {
         await createData({ userId: "", key, value });
         setKey("");
-        setValue(!value);
         router.refresh()
       } catch (error) {
         console.error("Failed to create API:", error);

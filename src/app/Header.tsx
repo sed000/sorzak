@@ -3,7 +3,7 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
-  SignOutButton,
+  UserButton,
 } from "@clerk/nextjs";
 import { Zap } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import React from "react";
 export default async function Header() {
   return (
     <div>
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-gray-200">
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-blue-100 bg-blue-100">
         <Link className="flex items-center justify-center" href="/">
           <Zap className="h-6 w-6 text-blue-600" />
           <span className="font-bold text-blue-600 text-xl ml-2">BaaS</span>
@@ -31,9 +31,7 @@ export default async function Header() {
                   Dashboard
                 </Link>
               </Button>
-              <Button variant={"destructive"}>
-                <SignOutButton />
-              </Button>
+              <UserButton />
             </div>
           </SignedIn>
         </nav>

@@ -10,12 +10,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Copy, Link, View } from "lucide-react";
+import { Link, View } from "lucide-react";
 import React from "react";
 import EditDialog from "./edit";
 import DeleteButton from "./delete";
 
-export default async function APITable() {
+export default async function DataTable() {
   const data = await fetchData();
   return (
     <div>
@@ -61,10 +61,7 @@ export default async function APITable() {
                       }}
                     ></DeleteButton>
 
-                    <Button variant="outline" size="sm">
-                      <View className="w-4 h-4 mr-1" />
-                      View Response
-                    </Button>
+                  
                   </div>
                 </TableCell>
               </TableRow>

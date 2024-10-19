@@ -30,13 +30,17 @@ export default function EditDialog({
   params: { id: string; key: string };
 }) {
   const router = useRouter();
-  const [key, setKey] = useState(params.key);
+  const [key, setKey] = useState("");
   const [value, setValue] = useState(false);
 
   async function saveChanges(key: string, value: boolean) {
     try {
-      await updateData(key, value, params.id);
-      setKey(key);
+      if (key == "") {
+        key = params.key;
+        await updateData(key, value, params.id);
+      } else {
+        await updateData(key, value, params.id);
+      }
     } catch (error) {
       console.log("Something went wrong");
     }

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import { Code, Smile } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -36,17 +36,9 @@ export default function Component() {
         </div>
         <SignedOut>
           <div className="container mx-auto max-w-md text-center py-4">
-            <Button
-              variant={"destructive"}
-              onClick={() => {
-                const signup = process.env.NEXT_PUBLIC_CLERK_SIGNUP
-                router.push(
-                  `${signup}`
-                );
-              }}
-            >
-              Sign up to use BaaS
-            </Button>
+           <SignUpButton>
+            <Button variant={"destructive"}>Sign Up to use BaaS</Button>
+           </SignUpButton>
           </div>
         </SignedOut>
         <SignedIn>

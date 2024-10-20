@@ -46,7 +46,7 @@ export default async function DataTable() {
                     </a>
                   </Button>
                 </TableCell>
-                <TableCell>{item.value.toString()}</TableCell>
+                <TableCell>{item.value.toString().toUpperCase()}</TableCell>
 
                 <TableCell>
                   <div className="flex space-x-2">

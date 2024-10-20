@@ -36,7 +36,7 @@ export default function Component() {
         </div>
         <SignedOut>
           <div className="container mx-auto max-w-md text-center py-4">
-           <SignUpButton>
+           <SignUpButton mode="modal">
             <Button variant={"destructive"}>Sign Up to use BaaS</Button>
            </SignUpButton>
           </div>

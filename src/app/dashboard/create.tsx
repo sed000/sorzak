@@ -16,6 +16,7 @@ import { createData } from "@/api/actions";
 import { useRouter } from "next/navigation";
 
 export default function CreateForm() {
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [key, setKey] = useState("");
   const [value, setValue] = useState<boolean | null>(null);
   const router = useRouter();
@@ -23,12 +24,15 @@ export default function CreateForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (key && value !== null) {
+      setLoading(true)
       try {
         await createData({ userId: "", key, value });
         setKey("");
+        setLoading(false)
         router.refresh();
       } catch (error) {
         console.error("Failed to create API:", error);
+        setLoading(false)
       }
     }
   };
@@ -68,6 +72,7 @@ export default function CreateForm() {
           <Button
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 text-white"
+            disabled={isLoading}
           >
             <Plus className="w-4 h-4 mr-2" />
             Create API

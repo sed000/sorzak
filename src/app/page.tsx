@@ -1,21 +1,21 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
-import { Code, Smile } from "lucide-react";
+import { ArrowRight, Code, Smile } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Component() {
   const router = useRouter();
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-gradient-to-b from-blue-100 to-gray-100">
+    <div className="flex flex-col min-h-[100dvh] bg-gradient-to-b from-blue-100 to-blue-200">
       <main className="flex-1 py-12 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-blue-900 mb-4">
               Boolean as a Service
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-blue-600 mb-8">
               Outsource your boolean operations for free
             </p>
           </div>
@@ -36,9 +36,9 @@ export default function Component() {
         </div>
         <SignedOut>
           <div className="container mx-auto max-w-md text-center py-4">
-           <SignUpButton mode="modal">
-            <Button variant={"destructive"}>Sign Up to use BaaS</Button>
-           </SignUpButton>
+            <SignUpButton mode="modal">
+              <Button variant={"destructive"} className="rounded-full">Sign Up to use BaaS</Button>
+            </SignUpButton>
           </div>
         </SignedOut>
         <SignedIn>
@@ -46,7 +46,7 @@ export default function Component() {
             <div className="container mx-auto max-w-md text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 <Link href={"/dashboard"} className="text-blue-500 underline">
-                  Go to your Dashboard
+                  <Button className="bg-blue-600 hover:bg-blue-700 rounded-full">Go to your Dashboard <ArrowRight></ArrowRight></Button>
                 </Link>
               </h2>
             </div>

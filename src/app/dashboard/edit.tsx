@@ -35,19 +35,19 @@ export default function EditDialog({
   const [value, setValue] = useState(false);
 
   async function saveChanges(key: string, value: boolean) {
-    setLoading(true)
+    setLoading(true);
     try {
       if (key == "") {
         key = params.key;
         await updateData(key, value, params.id);
-        setLoading(false)
+        setLoading(false);
       } else {
         await updateData(key, value, params.id);
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
       console.log("Something went wrong");
-      setLoading(false)
+      setLoading(false);
     }
     router.refresh();
   }
@@ -65,7 +65,8 @@ export default function EditDialog({
           <DialogHeader>
             <DialogTitle>Edit</DialogTitle>
             <DialogDescription>
-              Make changes to your boolean service here. Click save when you're done.
+              Make changes to your boolean service here. Click save when you're
+              done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -105,7 +106,7 @@ export default function EditDialog({
               disabled={isLoading}
               type="submit"
               onClick={() => saveChanges(key, value)}
-              className="bg-blue-600"
+              className="bg-blue-600 hover:bg-blue-700"
             >
               Save changes
             </Button>

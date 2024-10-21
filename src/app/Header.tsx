@@ -9,23 +9,26 @@ export default async function Header() {
     <div>
       <header className="px-4 lg:px-6 h-16 flex items-center border-b border-blue-100 bg-blue-100">
         <Link className="flex items-center justify-center" href="/">
-          <Zap className="h-6 w-6 text-blue-600" />
-          <span className="font-bold text-blue-600 text-xl ml-2">BaaS</span>
+          <Zap className="h-6 w-6 text-blue-900" />
+          <span className="font-bold text-blue-900 text-xl ml-2">BaaS</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <SignedOut>
-            <Button>
+            <Button className="rounded-full bg-blue-600 hover:bg-blue-700">
               <SignInButton mode="modal" />
             </Button>
           </SignedOut>
 
           <SignedIn>
             <div className="flex gap-3 items-center">
-              <Button>
-                <Link className="" href="/dashboard">
+              <Link className="" href="/dashboard">
+                <Button
+           
+                  className="bg-blue-600 hover:bg-blue-700 rounded-full"
+                >
                   Dashboard
-                </Link>
-              </Button>
+                </Button>
+              </Link>
               <UserButton />
             </div>
           </SignedIn>

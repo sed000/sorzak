@@ -16,7 +16,7 @@ export default function Component() {
               Boolean as a Service
             </h1>
             <p className="text-xl text-blue-600 mb-8">
-              Outsource your boolean operations for free
+              Create custom boolean APIs
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 text-center">
@@ -24,13 +24,13 @@ export default function Component() {
               <Code className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h2 className="text-xl font-semibold mb-2">Simple to use</h2>
               <p className="text-gray-600">
-                Open up an account and create many BaaS services as you need
+                Open up an account and create many APIs as you need
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <Smile className="h-12 w-12 text-blue-600 mx-auto mb-4" />
               <h2 className="text-xl font-semibold mb-2">Free</h2>
-              <p className="text-gray-600">It's currently free to use BaaS</p>
+              <p className="text-gray-600">It's currently free to use</p>
             </div>
           </div>
         </div>

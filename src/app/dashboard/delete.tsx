@@ -16,7 +16,8 @@ export default function DeleteButton({ params }: { params: { id: string } }) {
     
     } catch (error) {
       console.error("Error deleting item:", error);
-    }
+    } 
+    setLoading(false)
     router.refresh();
   }
 

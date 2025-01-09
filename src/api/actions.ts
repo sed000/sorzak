@@ -2,7 +2,7 @@
 
 import { auth } from "@clerk/nextjs/server";
 
-const apiLink = process.env.NEXT_PUBLIC_API_LINK;
+const apiLink = process.env.API_LINK;
 
 interface DataItem {
   id?: string;

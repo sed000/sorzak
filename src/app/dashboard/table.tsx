@@ -16,7 +16,7 @@ import DeleteButton from "./delete";
 import { fetchData } from "@/api/actions";
 
 export default async function DataTable() {
-  const apiLink = process.env.NEXT_PUBLIC_API_LINK;
+  const apiLink = process.env.API_LINK;
   const data = await fetchData();
   return (
     <div>
